@@ -1,0 +1,6 @@
+/libs
+.sass-cache/
+/static/.sass-cache
+/node_modules
+/target
+/static/css

@@ -1,0 +1,56 @@
+/******************************************/
+/*					FONTS			  	  */
+/******************************************/
+
+/******************************************/
+/******************************************/
+h1, h2, h3, h4, h5 {font-weight: normal; margin: 0px;}
+.clear {clear: both;}
+* {
+	@include box-sizing();
+	outline: none;
+}
+/******************************************/
+/*					COLORS			  	  */
+/******************************************/
+
+
+/******************************************/
+/*					GRID			  	  */
+/******************************************/
+// Specify the number of columns and set column and gutter widths
+$column-width: 60;
+$gutter-width: 20;
+$columns: 12;
+
+// Remove the definition below for a pixel-based layout
+$total-width: 100%;
+
+/*
+UTILIZZO
+@include column(numero di colonne) - "@include column(3)" -> 3 colonne di 12 "$columns: 12"
+per avere le colonne 100% quindi "@include column(12)"
+
+variabili basate sul sistema grid 960 a 12 colonne
+$column-width: 60;		larghezza colonna	|| 60*12 = 720
+$gutter-width: 20;		larghezza gap		|| 20*12 = 240
+$columns: 12;			numero di colonne	|| 720+240 = 960
+
+MEDIA QUERIES
+@media screen and (max-width: 720px) {
+		#elemento {
+			@include column(12);
+		}
+	}
+}
+*/
+
+// @include column(3)
+
+
+/******************************************/
+/*				MEDIA QUERIES			  */
+/******************************************/
+$responsive-break-small: 640px;
+$responsive-break-small2: 520px;
+$responsive-break-small3: 320px;

@@ -1,0 +1,19 @@
+@import 'libs/normalize.scss';
+@import 'libs/elements.scss';		//purple mixin
+@import 'libs/grid.scss';			//semantic grid system http://semantic.gs/
+@import 'libs/vars.scss';			//project variables
+
+@import 'desktop/desktop.scss';
+
+html.ie8 {
+	
+}
+
+
+@media screen and (max-width: $responsive-break-small) {
+	@import 'mobile/mobile.scss';
+}
+
+@media only screen and (orientation : landscape) and (max-width: $responsive-break-small) {
+	
+}

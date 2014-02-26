@@ -1,0 +1,228 @@
+// alessio //
+
+
+/**
+ *  mixin per trasformare i px in em
+ *  utilizzo: regola: em(valore in px);
+ *  es: font-size: em(16); => font-size: 16px; => font-size: 1em;
+ */
+$browser-context: 16; // Default
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+
+// @include vertical-align();
+@mixin vertical-align {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin text-shadow($x:0px, $y:0px, $blur:0px, $color:#000) {
+  text-shadow: $x $y $blur $color;
+}
+
+// @include opacity(1);
+@mixin opacity($opacity: 0.5) {
+  -moz-opacity: $opacity;
+  -khtml-opacity: $opacity;
+  -webkit-opacity: $opacity;
+  opacity: $opacity;
+  $opperc: $opacity * 100;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=${opperc})";
+  filter: "alpha(opacity=${opperc})";
+}
+
+// @include background-image-retina(logo, png, 200px, 100px);
+@mixin background-image-retina($file, $type, $width, $height) {
+  background-image: url($file + '.' + $type);
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx){
+    & {
+      background-image: url($file + '@2x.' + $type);
+      -webkit-background-size: $width $height;
+      -moz-background-size: $width $height;
+      -o-background-size: $width $height;
+      background-size: $width $height;
+    }
+  }
+}
+
+// @include bgCover();
+@mixin bgCover {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+// @include bgSize(size);
+@mixin bgSize($size) {
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  -o-background-size: $size;
+  background-size: $size;
+}
+
+//background-gradient
+//@include gradient(#000, #fff);
+
+@mixin gradient($from, $to) {
+  /* fallback/image non-cover color */
+  background-color: $from;
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
+
+// @include hidden();
+@mixin hidden {
+	position: fixed;
+	visibility: hidden;
+	left: -999999px;
+	z-index: -999999;
+}
+
+// @include removeHidden();
+@mixin removeHidden {
+	position: relative;
+	visibility: visible;
+	left: auto;
+	z-index: auto;
+}
+
+// @include inner-shadow(0px,0px,0px,1);
+@mixin inner-shadow($horizontal: 0px, $vertical: 1px, $blur: 2px, $alpha: 0.4) {
+  -webkit-box-shadow: inset $horizontal $vertical $blur rgba(0, 0, 0, $alpha);
+  -moz-box-shadow: inset $horizontal $vertical $blur rgba(0, 0, 0, $alpha);
+  box-shadow: inset $horizontal $vertical $blur rgba(0, 0, 0, $alpha);
+}
+
+// @include box-shadow();
+@mixin box-shadow($arguments) {
+  -webkit-box-shadow: $arguments;
+  -moz-box-shadow: $arguments;
+  box-shadow: $arguments;
+}
+
+//@include drop-shadow(0px,0px,0px,1);
+@mixin drop-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $alpha: 0.1) {
+  -webkit-box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
+  -moz-box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
+  box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
+}
+
+// @include rounded(4px);
+@mixin rounded($radius: 2px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+// @include placeholderColor(#f00);
+@mixin placeholderColor($color: red) {
+	::-webkit-input-placeholder { /* WebKit browsers */
+	    color:    $color;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	    color:    $color;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	    color:    $color;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10+ */
+	    color:    $color;
+	}
+}
+
+// @include scale();
+@mixin scale($xvalue: 1.0, $yvalue: 1.0) {
+  transform: scale($xvalue, $yvalue);
+  -webkit-transform: scale($xvalue, $yvalue);
+  -o-transform: scale($xvalue, $yvalue);
+  -moz-transform: scale($xvalue, $yvalue);
+}
+
+// @include rotateY();
+@mixin rotateY($value: 0) {
+  transform: rotateY($value);
+  -webkit-transform: rotateY($value);
+  -o-transform: rotateY($value);
+  -moz-transform: rotateY($value);
+}
+
+// @include box-sizing();
+@mixin box-sizing($sizing: border-box) {
+  -ms-box-sizing: $sizing;
+  -moz-box-sizing: $sizing;
+  -webkit-box-sizing: $sizing;
+  box-sizing: $sizing;
+}
+
+// start transition
+// @include transition(all,0.4s,linear,0s);
+@mixin transition-property($property: all) {
+	-webkit-transition-property: $property;
+	-moz-transition-property: $property;
+	-o-transition-property: $property;
+	transition-property: $property;
+}
+
+@mixin transition-duration($duration: 0.2s) {
+	-webkit-transition-duration: $duration;
+	-moz-transition-duration: $duration;
+	-o-transition-duration: $duration;
+	transition-duration: $duration;
+}
+
+@mixin transition-timing-function($ease: linear) {
+	-webkit-transition-timing-function: $ease;
+	-moz-transition-timing-function: $ease;
+	-o-transition-timing-function: $ease;
+	transition-timing-function: $ease;
+}
+
+@mixin transition-delay($delay: 0s) {
+	-webkit-transition-delay: $delay;
+	-moz-transition-delay: $delay;
+	-o-transition-delay: $delay;
+	transition-delay: $delay;
+}
+
+@mixin transition($property: all, $duration: 0.2s, $ease: linear, $delay: 0s) {
+  @include transition-property($property);
+  @include transition-duration($duration);
+  @include transition-timing-function($ease);
+  @include transition-delay($delay);
+}
+// end transition
+
+
+// grayscale      ex: filter: grayscale(100%);
+// sepia          ex: filter: sepia(100%);
+// saturate       ex: filter: saturate(0%);
+// hue-rotate     ex: filter: hue-rotate(45deg);
+// invert         ex: filter: invert(100%);
+// brightness     ex: filter: brightness(15%);
+// contrast       ex: filter: contrast(200%);
+// blur           ex: filter: blur(2px);
+ 
+@mixin filter($filter-type,$filter-amount) { 
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+
+@mixin backface($value: hidden) {
+  -webkit-backface-visibility: $value;
+  -moz-backface-visibility:    $value;
+  -ms-backface-visibility:     $value;
+}

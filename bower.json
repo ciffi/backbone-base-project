@@ -1,0 +1,33 @@
+{
+  "name": "project name",
+  "version": "0.0.0",
+  "description": "project description",
+  "main": "project",
+  "keywords": [
+    "Project"
+  ],
+  "authors": [
+    "PURPLENETWORK S.R.L."
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "latest",
+    "jquery": "1.9.1",
+    "backbone": "latest",
+    "underscore": "latest",
+    "handlebars": "latest",
+    "Backbone.ModelBinder": "latest",
+    "modernizr": "latest",
+    "requirejs-plugins": "~1.0.2",
+    "jquery-placeholder": "latest",
+    "jqueryui": "latest"
+  }
+}

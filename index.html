@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Emir</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="static/css/style.css" rel="stylesheet" media="screen">
+    <script type="text/javascript">
+    	// da nascondere in produzione
+    	var _ENV = 'dev';
+    	var _DEBUG = true;
+    </script>
+
+    <!-- NO ONE-FILE BOOTSTRAP (ONLY FOR DEV) -->
+    <script data-main="js/emir.js" src="libs/requirejs/require.js"></script>
+    <script type="text/javascript" src="build-config-dev.js"></script>
+    <!---->
+    <!-- ONE-FILE BOOTSTRAP -->
+    <!-- <script type="text/javascript" src="{{ asset('target/spa-module-pandora.js') }}"></script> -->
+    <!---->            
+
+  </head>
+  <body>
+
+        <div id="PN-WRAPPER">
+            
+        </div>
+
+  </body>
+</html>
